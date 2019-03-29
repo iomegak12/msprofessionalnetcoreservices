@@ -20,7 +20,7 @@
 		    {
 			    "name":"CRMSystemDBConnectionString",
 			    "value":"ConnectionString"
-		    },
+		    }
 	    ],
             "essential": true
 		}
