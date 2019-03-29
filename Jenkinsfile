@@ -23,6 +23,13 @@ pipeline {
         sh 'bash ./jenkins/scripts/cleanup-containers.sh'
       }
     }
+    stage('AWS Deploy') {
+      steps {
+        emailext(subject: '${JOB_NAME} - ${BUILD_ID} - Approval Task', body: 'The pipeline for ${JOB_NAME} has completed pre-processing tasks successfully, needs to be approved before it\'s being deployed to AWS environment.  To continue approval, click <a href=\'${BUILD_URL}\'> here </a>  Logs:  ${BUILD_LOG}', to: 'jd.ramkumar@gmail.com')
+        input(message: 'Would you like to continue deploying to AWS ECS Cluster?', ok: 'Yes, Please!')
+        sh 'bash ./jenkins/scripts/aws-deploy.sh'
+      }
+    }
   }
   environment {
     HOME = '.'
