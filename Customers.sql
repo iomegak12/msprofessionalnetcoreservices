@@ -3,7 +3,7 @@ create table Customers (
 	CustomerName VARCHAR(50),
 	Address VARCHAR(255),
 	Credit INT,
-	Status INT,
+	Status BIT,
 	Email VARCHAR(50),
 	Phone VARCHAR(50),
 	Remarks NVARCHAR(MAX)
